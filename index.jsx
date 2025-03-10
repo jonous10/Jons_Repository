@@ -2,8 +2,7 @@ const { useState } = React;
 
 function Square({ value, onSquareClick }) {
     return (
-      <button className="square" onClick={onSquareClick}>
-        {value}
+      <button className="square" id={value} onClick={onSquareClick}>
       </button>
     );
   }
