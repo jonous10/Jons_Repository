@@ -1,0 +1,68 @@
+{
+    "board_states": {
+      "[null,null,\"O\",null,\"X\",\"O\",null,null,\"X\"]": {
+        "0": {"wins": 0, "losses": 0},
+        "1": {"wins": 0, "losses": 0},
+        "3": {"wins": 0, "losses": 0},
+        "6": {"wins": 0, "losses": 0},
+        "7": {"wins": 0, "losses": 0}
+      },
+      "[null,null,\"O\",null,null,null,\"X\",\"X\",\"O\"]": {
+        "0": {"wins": 0, "losses": 0},
+        "1": {"wins": 0, "losses": 0},
+        "3": {"wins": 0, "losses": 0},
+        "4": {"wins": 0, "losses": 0},
+        "5": {"wins": 0, "losses": 0}
+      },
+      "[\"O\",\"X\",\"X\",null,null,\"O\",null,null,null]": {
+        "3": {"wins": 0, "losses": 0},
+        "4": {"wins": 0, "losses": 0},
+        "6": {"wins": 0, "losses": 0},
+        "7": {"wins": 0, "losses": 0},
+        "8": {"wins": 0, "losses": 0}
+      },
+      "[null,null,null,null,null,null,null,null,null]": {
+        "0": {"wins": 0, "losses": 0},
+        "1": {"wins": 0, "losses": 0},
+        "2": {"wins": 0, "losses": 0},
+        "3": {"wins": 0, "losses": 0},
+        "4": {"wins": 0, "losses": 0},
+        "5": {"wins": 0, "losses": 0},
+        "6": {"wins": 0, "losses": 0},
+        "7": {"wins": 0, "losses": 0},
+        "8": {"wins": 0, "losses": 0}
+      },
+      "[\"X\",null,null,null,\"O\",null,null,\"O\",\"X\"]": {
+        "1": {"wins": 0, "losses": 0},
+        "2": {"wins": 0, "losses": 0},
+        "3": {"wins": 0, "losses": 0},
+        "5": {"wins": 0, "losses": 0},
+        "6": {"wins": 0, "losses": 0}
+      },
+      "[\"X\",null,null,null,null,null,\"O\",null,null]": {
+        "1": {"wins": 0, "losses": 0},
+        "2": {"wins": 0, "losses": 0},
+        "3": {"wins": 0, "losses": 0},
+        "4": {"wins": 0, "losses": 0},
+        "5": {"wins": 0, "losses": 0},
+        "7": {"wins": 0, "losses": 0},
+        "8": {"wins": 0, "losses": 0}
+      }
+    },
+    "states": {
+      "undefined": {
+        "moves": {
+          "0": {"wins": 2, "losses": 7},
+          "1": {"wins": 1, "losses": 6},
+          "2": {"wins": 2, "losses": 7},
+          "3": {"wins": 1, "losses": 5},
+          "4": {"wins": 2, "losses": 7},
+          "5": {"wins": 2, "losses": 8},
+          "6": {"wins": 1, "losses": 7},
+          "7": {"wins": 1, "losses": 7},
+          "8": {"wins": 2, "losses": 8},
+          "null": {"wins": 2, "losses": 9}
+        }
+      }
+    }
+  }
