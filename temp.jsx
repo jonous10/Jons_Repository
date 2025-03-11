@@ -1,14 +1,16 @@
 const { useState, useEffect } = React;
 
-let aiMemory = JSON.parse(localStorage.getItem("aiMemory")) || {}; 
+let aiMemory = JSON.parse(localStorage.getItem("aiMemory")) || { states: {} };
 let epsilon = parseFloat(localStorage.getItem("epsilon")) || 0.8;
 
 function saveMemory() {
   localStorage.setItem("aiMemory", JSON.stringify(aiMemory));
   localStorage.setItem("epsilon", epsilon.toString());
+  console.log("Saved AI Memory:", JSON.parse(localStorage.getItem("aiMemory"))); // Debugging
 }
 
 function resetMemory() {
+  console.log("MEMORY RESET!")
   aiMemory = {};
   epsilon = 0.8;
   saveMemory();
@@ -58,20 +60,22 @@ function adjustEpsilon() {
 }
 
 function updateMemory(gameStates, result) {
+  console.log("Updating AI Memory for", result);
   gameStates.forEach(({ state, move }) => {
     if (!Array.isArray(state)) return;
-
-    if (!aiMemory.states) aiMemory.states = {}; // Ensure root exists
- 
+    
     const key = JSON.stringify(state);
-    if (!aiMemory.states[key]) aiMemory.states[key] = { moves: {} };
-    if (!aiMemory.states[key].moves[move]) aiMemory.states[key].moves[move] = { wins: 0, losses: 0 };
- 
+    
+    if (!aiMemory.states) aiMemory.states = {}; // Ensure `states` exists
+    if (!aiMemory.states[key]) aiMemory.states[key] = {}; // Ensure `key` exists
+    if (!aiMemory.states[key][move]) aiMemory.states[key][move] = { wins: 0, losses: 0 }; // Ensure `move` exists
+    
     // Update win/loss count
-    if (result === "X") aiMemory.states[key].moves[move].wins += 1;
-    else if (result === "O") aiMemory.states[key].moves[move].losses += 1;
- 
-    saveMemory();
+    if (result === "X") aiMemory.states[key][move].wins += 1;
+    else if (result === "O") aiMemory.states[key][move].losses += 1;
+
+    console.log("Memory before saving:", aiMemory); // Debugging
+    saveMemory(); // Save the updated memory
   });
 }
 
@@ -106,6 +110,8 @@ function Board({ xIsNext, squares, onPlay }) {
                 const nextSquares = squares.slice();
                 nextSquares[row + col] = "O";
                 onPlay(nextSquares, row + col);
+                epsilon -= 1;
+                updateMemory();
               }}
               disabled={xIsNext}
             />
@@ -128,7 +134,10 @@ function Game() {
     setCurrentMove(currentMove + 1);
 
     const winner = calculateWinner(nextSquares);
-    if (winner) updateMemory(newHistory, winner);
+    if (winner) {
+      console.log("Winner!, running updateMemory()")
+      updateMemory(newHistory, winner);
+    }
     if (!nextSquares.includes(null)) adjustEpsilon();
   }
 
